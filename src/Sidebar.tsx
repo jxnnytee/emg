@@ -4,7 +4,6 @@ import {
   Box,
   CloseButton,
   Flex,
-  Icon,
   useColorModeValue,
   Link,
   Drawer,
@@ -13,26 +12,11 @@ import {
   useDisclosure,
   BoxProps,
   FlexProps,
+  VStack,
 } from '@chakra-ui/react';
 import { RiMenu2Line } from 'react-icons/ri';
-import { IconType } from 'react-icons';
-import { ReactText } from 'react';
 
-interface LinkItemProps {
-  name: string;
-  icon: IconType;
-  href: string;
-  isExternal: boolean;
-  children?: ReactNode;
-  onClick?: () => void;
-  color?: string;
-  size?: string;
-  variant?: string;
-  padding?: string;
-  bg?: string;
-}
 
-const LinkItems: Array<LinkItemProps> = [];
 
 interface SidebarProps extends BoxProps {
   onClose: () => void;
@@ -53,57 +37,27 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         <Text color={'whitesmoke'} fontSize="2xl" ml="0" fontFamily="Poppins" fontWeight="semibold">
           EMGC
         </Text>
+        
 
         <CloseButton ml={-20} color={'white'} display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
-      {LinkItems.map((link) => (
-        <NavItem href={link.href} key={link.name} icon={link.icon}>
-          {link.name}
-        </NavItem>
-      ))}
+      <VStack mx={8} my={5}  spacing={8} fontSize={'2xl'} align={'start'}  fontWeight={'lighter'} color={'whitesmoke'}>
+            <Link 
+            href="./"
+            ><Text _hover={{ fontWeight:'bold'}}>Home</Text></Link>
+            <Link 
+            href="./about"
+            ><Text _hover={{ fontWeight:'bold'}}>About</Text></Link>
+            <Link href="./services" _hover={{ fontWeight:'bold'}}><Text>Services</Text></Link>
+            <Link href="./projects" _hover={{ fontWeight:'bold'}}><Text>Projects</Text></Link>
+            <Link href="./contact" _hover={{ fontWeight:'bold'}}><Text>Contact</Text></Link>
+           
+          </VStack>
     </Box>
   );
 };
 
-interface NavItemProps extends FlexProps {
-  icon: IconType;
-  children: ReactText;
-  href: string;
-}
 
-const NavItem = ({ icon, href, children, ...rest }: NavItemProps) => {
-  return (
-    <Link href={href} style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
-      <Flex
-        align="center"
-        p="4"
-        mx="4"
-        borderRadius="lg"
-        role="group"
-        textShadow={'0px 0px 40px black'}
-        color={'whitesmoke'}
-        cursor="pointer"
-        _hover={{
-          bg: 'cyan.400',
-          color: 'white',
-        }}
-        {...rest}
-      >
-        {icon && (
-          <Icon
-            mr="4"
-            fontSize="16"
-            _groupHover={{
-              color: 'white',
-            }}
-            as={icon}
-          />
-        )}
-        {children}
-      </Flex>
-    </Link>
-  );
-};
 
 interface MobileProps extends FlexProps {
   onOpen: () => void;
@@ -116,11 +70,13 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       px={{ base: 4, md: 24 }}
       height="20"
       w={'100%'}
+      
       alignItems="center"
       bgColor="black"
       justifyContent="flex-start"
       {...rest}
     >
+      
       <IconButton
         size="lg"
         fontSize={30}
@@ -153,6 +109,7 @@ export default function SimpleSidebar({ children }: { children: ReactNode }) {
         isOpen={isOpen}
         placement="left"
         onClose={onClose}
+        
         returnFocusOnClose={false}
         onOverlayClick={onClose}
         size="full"
