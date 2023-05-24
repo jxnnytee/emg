@@ -1,6 +1,6 @@
 import { Box, Heading, Flex, Button, Text, Image, Center, Divider } from "@chakra-ui/react";
 import './Emg.css';
-import CaptionCarousel from "./Carousel";
+
 
 function About() {
     return (
