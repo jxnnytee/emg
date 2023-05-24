@@ -1,4 +1,4 @@
-import { Box, HStack, Text, Center, Divider, Flex, Link } from "@chakra-ui/react";
+import { Box, HStack, Text, Flex, Link } from "@chakra-ui/react";
 import './Navbar.css'
 
 function Navbar() {

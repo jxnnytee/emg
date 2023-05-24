@@ -1,6 +1,5 @@
-import { Box, Heading, Flex, Button, Text, Image, Center, Divider, HStack, VStack } from "@chakra-ui/react";
+import { Box, Heading, Flex, Button, Text, Image, Center, Divider, VStack } from "@chakra-ui/react";
 import './Emg.css';
-import CaptionCarousel from "./Carousel";
 
 function Services() {
     return (
